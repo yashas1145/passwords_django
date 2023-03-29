@@ -1,0 +1,28 @@
+{%extends 'website/base.html'%}
+
+{%block title%}Password saver{%endblock%}
+
+{%block body%}
+    <h2>A better way to store passwords!</h2>
+
+    <h4>Your stored passwords:</h2>
+
+    <table>
+        <tr>
+            <th>URL</th>
+            <th>Password</th>
+        </tr>
+        {%for i in pass%}
+        <tr>
+            <td>{{i.url}}</td>
+            <td>{{i.password}}</td>
+            <td><a href="{%url 'upd_password' my_value=i.id%}"><button type="button" class="btn btn-success">Update</button></a></td>
+            <td><a href="{%url 'del_password' my_value=i.id%}"><button type="button" class="btn btn-danger">Delete</button></a></td>
+        </tr>
+        {%endfor%}
+        <tr>
+            <td align="center"><a href="{%url 'add_password'%}"><button type="button" class="btn btn-primary">Add password</button></a></td>
+        </tr>
+    </table>
+    
+{%endblock%}
